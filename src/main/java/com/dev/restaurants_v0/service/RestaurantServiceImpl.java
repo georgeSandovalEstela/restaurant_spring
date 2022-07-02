@@ -21,8 +21,9 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public Restaurants saveRestaurant(RestaurantRequest restaurantRequest) throws Exception {
-        return restaurantRepository.save(restaurantRequest.castModel());
+    public String saveRestaurant(RestaurantRequest restaurantRequest) throws Exception {
+        restaurantRepository.save(restaurantRequest.castModel());
+        return "";
     }
 
     @Override

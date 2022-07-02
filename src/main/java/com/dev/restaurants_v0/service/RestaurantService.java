@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface RestaurantService {
     List<Restaurants> getAllRestaurants()throws Exception;
-    Restaurants saveRestaurant(RestaurantRequest restaurantRequest)throws Exception;
+    String saveRestaurant(RestaurantRequest restaurantRequest)throws Exception;
     Restaurants updateRestaurant(RestaurantUpdateRequest restaurantUpdateRequest) throws Exception;
     Restaurants findRestaurantById(Long id)throws Exception;
     Restaurants deleteRestaurantById(Long id)throws Exception;

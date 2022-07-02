@@ -1,6 +1,7 @@
 package com.dev.restaurants_v0.controller;
 
 import com.dev.restaurants_v0.domain.Restaurants;
+import com.dev.restaurants_v0.dto.base.GlobalResponse;
 import com.dev.restaurants_v0.dto.request.RestaurantRequest;
 import com.dev.restaurants_v0.service.RestaurantService;
 import lombok.RequiredArgsConstructor;
@@ -16,9 +17,10 @@ public class RestaurantsController {
     final RestaurantService restaurantService;
 
     @RequestMapping("/save")
-    public ResponseEntity<Restaurants> saveRestaurants(@RequestBody RestaurantRequest restaurantRequest) throws Exception {
+    public ResponseEntity<GlobalResponse> saveRestaurants(@RequestBody RestaurantRequest restaurantRequest) throws Exception {
         Restaurants restaurants = restaurantService.saveRestaurant(restaurantRequest);
-        return ResponseEntity.ok(restaurants);
+        return ResponseEntity.ok(GlobalResponse.builder()
+                .build());
     }
 
     @RequestMapping("/view")

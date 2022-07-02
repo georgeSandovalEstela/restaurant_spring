@@ -9,6 +9,7 @@ import java.util.Date;
 @Setter
 @Getter
 public class RestaurantRequest {
+
     private String ruc;
     private String name;
     private String description;
