@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @Builder
-public class GlobalResponse<A> {
-    private String code;
-    private A data;
+public class GlobalResponse {
+    private ErrorResponse error;
+    private Object data;
 }
