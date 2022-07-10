@@ -3,6 +3,9 @@ package com.dev.restaurants_v0.service;
 import com.dev.restaurants_v0.domain.Restaurants;
 import com.dev.restaurants_v0.dto.request.RestaurantRequest;
 import com.dev.restaurants_v0.dto.request.RestaurantUpdateRequest;
+import com.dev.restaurants_v0.dto.response.Restaurants.PersonalsRestaurantsResponse;
+import com.dev.restaurants_v0.dto.response.Restaurants.RestaurantPersonalsResponse;
+import com.dev.restaurants_v0.repository.PersonalsRespository;
 import com.dev.restaurants_v0.repository.RestaurantRepository;
 import com.dev.restaurants_v0.utils.Codes;
 import com.dev.restaurants_v0.utils.Constants;
@@ -18,6 +21,7 @@ import java.util.Optional;
 public class RestaurantServiceImpl implements RestaurantService {
 
     public final RestaurantRepository restaurantRepository ;
+    public final PersonalsRespository personalsRespository;
 
     @Override
     public List<Restaurants> getAllRestaurants() throws Exception {
@@ -59,5 +63,11 @@ public class RestaurantServiceImpl implements RestaurantService {
         return Codes.SUCCESS_DELETE;
     }
 
-
+    @Override
+    public RestaurantPersonalsResponse getPersonalsByRestaurantId(Long id) throws Exception {
+        Optional<Restaurants> restaurants = restaurantRepository.findByIdAndState(id, Integer.valueOf(Constants.STATE_ACTIVE));
+        if(!restaurants.isPresent()) return null;
+        List<PersonalsRestaurantsResponse> response = personalsRespository.getPersonalsByRestaurantsId(id);
+        return RestaurantPersonalsResponse.builder().personals(response).build();
+    }
 }

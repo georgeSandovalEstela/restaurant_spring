@@ -11,6 +11,7 @@ import java.util.Date;
 @Builder
 @Getter
 @Setter
+@Entity
 @Table(name = "personals", schema = "public")
 public class Personals implements Serializable {
     private static final Long seriaVersionUID = 1L;
@@ -19,7 +20,7 @@ public class Personals implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @JoinColumn(name = "restaurants", referencedColumnName = "id")
+    @JoinColumn(name = "restaurants_id", referencedColumnName = "id")
     @ManyToOne
     private Restaurants restaurants;
 

@@ -11,6 +11,7 @@ import java.util.Date;
 @Setter
 @Getter
 @Builder
+@Entity
 @Table(name = "documentstypes", schema = "public")
 public class DocumentsTypes implements Serializable {
     private static final long seriaVersionUID = 1L;

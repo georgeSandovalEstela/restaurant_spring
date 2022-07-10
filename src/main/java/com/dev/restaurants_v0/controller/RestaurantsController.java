@@ -5,12 +5,15 @@ import com.dev.restaurants_v0.dto.base.ErrorResponse;
 import com.dev.restaurants_v0.dto.base.GlobalResponse;
 import com.dev.restaurants_v0.dto.request.RestaurantRequest;
 import com.dev.restaurants_v0.dto.request.RestaurantUpdateRequest;
+import com.dev.restaurants_v0.dto.response.Restaurants.RestaurantPersonalsResponse;
 import com.dev.restaurants_v0.service.RestaurantService;
 import com.dev.restaurants_v0.utils.Codes;
 import com.dev.restaurants_v0.utils.Messages;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Objects;
 
 @RestController
 @RequestMapping("api/v1/restaurants")
@@ -60,7 +63,9 @@ public class RestaurantsController {
 
     @GetMapping("/{id}/personals")
     public ResponseEntity<GlobalResponse> findPersonalsByRestaurant(@PathVariable Long id)  throws Exception{
+        RestaurantPersonalsResponse response = restaurantService.getPersonalsByRestaurantId(id);
         return ResponseEntity.ok(GlobalResponse.builder()
-                .data(null).build());
+                .error(Objects.isNull(response)?ErrorResponse.builder().code(Codes.COMMON_ERR_ID_001).message(Messages.COMMON_ERROR_ID).build():null)
+                .data(response).build());
     }
 }

@@ -11,6 +11,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Builder
+@Entity
 @Table(name = "persons", schema = "public")
 public class Persons implements Serializable {
     private static final long seriaVersionUID = 1L;

@@ -1,6 +1,7 @@
 package com.dev.restaurants_v0.repository;
 
 import com.dev.restaurants_v0.domain.Restaurants;
+import com.dev.restaurants_v0.dto.response.Restaurants.PersonalsRestaurantsResponse;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,4 +21,10 @@ public interface RestaurantRepository extends JpaRepository<Restaurants, Long> {
     Restaurants deleteById(@Param("id")Long id, @Param("stateInactive")Integer stateInactive)throws Exception;
 
     List<Restaurants> findALlByState(Integer state);
+    /*
+    * @Query(value = "SELECT new com.smart.business.administration.dto.response.ViewFeatureDto(" +
+            "vf.id, vf.name, vf.description,vf.featureValues) FROM ViewFeature vf " +
+            "WHERE upper(vf.name) LIKE UPPER(:filter) OR upper(vf.description) LIKE UPPER(:filter)")
+    * */
+
 }
