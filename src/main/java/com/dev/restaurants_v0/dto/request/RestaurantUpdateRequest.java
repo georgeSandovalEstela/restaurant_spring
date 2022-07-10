@@ -7,12 +7,9 @@ import lombok.Setter;
 @Setter
 @Getter
 public class RestaurantUpdateRequest {
+    private Long id;
     private String ruc;
     private String name;
     private String description;
     private String address;
-
-    public Restaurants castModel(){
-        return Restaurants.builder().ruc(ruc).name(name).description(description).address(address).build();
-    }
 }
