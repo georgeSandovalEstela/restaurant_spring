@@ -3,9 +3,7 @@ package com.dev.restaurants_v0.service;
 
 import com.dev.restaurants_v0.dto.request.PersonalsRequest;
 
-import java.util.List;
-
-public interface PersonalsService {
+public interface PersonsService {
     String savePersonals(PersonalsRequest personalsRequest)throws Exception;
     /*List<Restaurants> getAllRestaurants()throws Exception;
     String updateRestaurant(RestaurantUpdateRequest restaurantUpdateRequest) throws Exception;

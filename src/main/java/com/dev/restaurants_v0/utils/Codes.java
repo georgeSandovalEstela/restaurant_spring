@@ -12,4 +12,6 @@ public class Codes {
     //RESTAURANTS
     public static final String RESTAURANT_ERROR_NAME = "R_ERROR_001";
 
+    //PERSONALS
+    public static final String PERSONALS_ERROR_DOCUMENT ="R_ERROR_001";
 }

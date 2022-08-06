@@ -15,7 +15,7 @@ import java.util.Date;
 
 @Service
 @RequiredArgsConstructor
-public class PersonalsServiceImpl implements PersonalsService {
+public class PersonsServiceImpl implements PersonalsService {
     private final PersonsRespository personsRespository;
     private final PersonalsRespository personalsRespository;
 
@@ -36,15 +36,6 @@ public class PersonalsServiceImpl implements PersonalsService {
                 .address(personalsRequest.getPerson().getAddress())
                 .country(personalsRequest.getPerson().getCountry())
                 .city(personalsRequest.getPerson().getCity())
-                .createdAt(new Date())
-                .build());
-        personalsRespository.save(Personals.builder()
-                .persons(personSearch)
-                .salaryDate(personalsRequest.getSalaryDate())
-                .contractAt(personalsRequest.getContractAt())
-                .restaurants(Restaurants.builder().id(personalsRequest.getRestaurantId()).build())
-                .finalContractAt(personalsRequest.getFinalContractAt())
-                .renovationContractAt(personalsRequest.getRenovationContractAt())
                 .createdAt(new Date())
                 .build());
         return Codes.SUCCESS_SAVE;

@@ -9,8 +9,8 @@ import java.util.Date;
 @Getter
 public class PersonalsRequest {
 
-    private Integer restaurantId;
-    private Integer personalsTypesId;
+    private Long restaurantId;
+    private Long personalsTypesId;
     private Date salaryDate;
     private Date contractAt;
     private Date finalContractAt;

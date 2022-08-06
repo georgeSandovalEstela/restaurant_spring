@@ -10,7 +10,7 @@ import java.util.Date;
 public class PersonRequest {
     private String name;
     private String lastname;
-    private Integer documentsTypeId;
+    private Long documentsTypeId;
     private String documentNumber;
     private Date birthday;
     private String email;
