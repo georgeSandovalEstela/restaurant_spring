@@ -38,7 +38,7 @@ public class PersonsServiceImpl implements PersonsService {
     }
 
     @Override
-    public Persons findPersonsByDocument(String documentNumber)throws Exception{
-        return null;
+    public Persons findPersonsByDocument(String documentNumber) throws Exception{
+        return personsRespository.findPersonsByDocumentNumber(documentNumber);
     }
 }
