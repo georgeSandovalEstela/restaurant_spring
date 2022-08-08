@@ -1,7 +1,7 @@
 package com.dev.restaurants_v0.service;
 
 import com.dev.restaurants_v0.domain.Restaurants;
-import com.dev.restaurants_v0.dto.request.RestaurantRequest;
+import com.dev.restaurants_v0.dto.request.RestaurantsSaveRequest;
 import com.dev.restaurants_v0.dto.request.RestaurantUpdateRequest;
 import com.dev.restaurants_v0.dto.response.Restaurants.PersonalsRestaurantsResponse;
 import com.dev.restaurants_v0.dto.response.Restaurants.RestaurantPersonalsResponse;
@@ -29,10 +29,10 @@ public class RestaurantServiceImpl implements RestaurantService {
     }
 
     @Override
-    public String saveRestaurant(RestaurantRequest restaurantRequest) throws Exception {
-        Long findByName = restaurantRepository.findByName(restaurantRequest.getName());
+    public String saveRestaurant(RestaurantsSaveRequest restaurantsSaveRequest) throws Exception {
+        Long findByName = restaurantRepository.findByName(restaurantsSaveRequest.getName());
         if(findByName > 0) return Codes.RESTAURANT_ERROR_NAME;
-        restaurantRepository.save(restaurantRequest.castModel());
+        restaurantRepository.save(restaurantsSaveRequest.castModel());
         return Codes.SUCCESS_SAVE;
     }
 

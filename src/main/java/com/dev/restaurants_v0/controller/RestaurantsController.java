@@ -3,7 +3,7 @@ package com.dev.restaurants_v0.controller;
 import com.dev.restaurants_v0.domain.Restaurants;
 import com.dev.restaurants_v0.dto.base.ErrorResponse;
 import com.dev.restaurants_v0.dto.base.GlobalResponse;
-import com.dev.restaurants_v0.dto.request.RestaurantRequest;
+import com.dev.restaurants_v0.dto.request.RestaurantsSaveRequest;
 import com.dev.restaurants_v0.dto.request.RestaurantUpdateRequest;
 import com.dev.restaurants_v0.dto.response.Restaurants.RestaurantPersonalsResponse;
 import com.dev.restaurants_v0.service.RestaurantService;
@@ -29,8 +29,8 @@ public class RestaurantsController {
                 .data(restaurantService.getAllRestaurants()).build());
     }
     @PostMapping("/save")
-    public ResponseEntity<GlobalResponse> saveRestaurants(@RequestBody RestaurantRequest restaurantRequest) throws Exception {
-        String code = restaurantService.saveRestaurant(restaurantRequest);
+    public ResponseEntity<GlobalResponse> saveRestaurants(@RequestBody RestaurantsSaveRequest restaurantsSaveRequest) throws Exception {
+        String code = restaurantService.saveRestaurant(restaurantsSaveRequest);
         return ResponseEntity.ok(GlobalResponse.builder()
                                 .error((code==Codes.SUCCESS_SAVE)?null: ErrorResponse.builder().code(code).message(Messages.RESTAURANT_ERROR_NAME).build())
                                 .data((code==Codes.SUCCESS_SAVE)?true: null).build());

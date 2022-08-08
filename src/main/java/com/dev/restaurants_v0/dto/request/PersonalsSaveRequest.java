@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Setter
 @Getter
-public class PersonalsRequest {
+public class PersonalsSaveRequest {
 
     private Long restaurantId;
     private Long personalsTypesId;
@@ -15,5 +15,5 @@ public class PersonalsRequest {
     private Date contractAt;
     private Date finalContractAt;
     private Date renovationContractAt;
-    private PersonRequest person;
+    private PersonsSaveRequest person;
 }
