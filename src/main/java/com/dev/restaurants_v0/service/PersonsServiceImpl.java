@@ -18,7 +18,7 @@ public class PersonsServiceImpl implements PersonsService {
 
     @Override
     public String savePersons(PersonsSaveRequest personsSaveRequest) throws Exception {
-        Persons personSearch =  personsRespository.findPersonsByDocumentNumber("74901792");
+        Object personSearch =  personsRespository.findPersonsByDocumentNumber(personsSaveRequest.getDocumentNumber());
         if(personSearch!=null) return Codes.PERSONS_ERROR_DOCUMENT;
         personsRespository.save(Persons.builder()
             .name(personsSaveRequest.getName())
@@ -38,7 +38,7 @@ public class PersonsServiceImpl implements PersonsService {
     }
 
     @Override
-    public Persons findPersonsByDocument(String documentNumber) throws Exception{
+    public Persons findPersonsByDocumentNumber(String documentNumber) throws Exception{
         return personsRespository.findPersonsByDocumentNumber(documentNumber);
     }
 }
