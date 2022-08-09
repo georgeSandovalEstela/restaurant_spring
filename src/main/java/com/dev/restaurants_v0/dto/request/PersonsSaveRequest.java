@@ -7,7 +7,7 @@ import java.util.Date;
 
 @Setter
 @Getter
-public class PersonRequest {
+public class PersonsSaveRequest {
     private String name;
     private String lastname;
     private Long documentsTypeId;

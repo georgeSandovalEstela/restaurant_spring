@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Setter
 @Getter
-public class RestaurantRequest {
+public class RestaurantsSaveRequest {
 
     private String ruc;
     private String name;

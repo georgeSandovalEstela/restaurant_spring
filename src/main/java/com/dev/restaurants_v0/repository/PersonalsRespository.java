@@ -14,4 +14,6 @@ public interface PersonalsRespository extends JpaRepository<Personals, Long> {
             "FROM Personals per " +
             "WHERE per.restaurants.id=:restaurantId")
     List<PersonalsRestaurantsResponse> getPersonalsByRestaurantsId(@Param("restaurantId")Long restaurantId) throws Exception;
+
+    Personals findPersonalsByPersons_DocumentNumber(String documentNumber)throws Exception;
 }
