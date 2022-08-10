@@ -1,12 +1,13 @@
 package com.dev.restaurants_v0.dto.request;
 
-import com.dev.restaurants_v0.domain.Restaurants;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+@AllArgsConstructor
 @Setter
 @Getter
-public class RestaurantUpdateRequest {
+public class RestaurantsUpdateRequest {
     private Long id;
     private String ruc;
     private String name;
