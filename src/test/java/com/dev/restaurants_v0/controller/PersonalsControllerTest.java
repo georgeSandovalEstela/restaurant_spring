@@ -58,4 +58,19 @@ public class PersonalsControllerTest {
         ResponseEntity<GlobalResponse> response = personalsController.findPersonalsByDocumentNumber("20987654672");
         assertTrue(Objects.isNull(response.getBody().getData()));
     }
+
+    @Test
+    public void findPersonalsById_SUCCESS()throws Exception{
+        PersonalsResponse personalsResponse = new PersonalsResponse(100L,"CAJERO",new Date(),new Date(),new Date(),new Date(),"Tunki",new PersonsResponse(100L,"George","Sandoval Estela","George Sandoval Estela","DNI","74901792",new Date(),"george.sandoval@email.com","MASCULINO","Los suaces","Peru","Tingo Maria"));
+        when(personalsService.findPersonalsById(100L)).thenReturn(personalsResponse);
+        ResponseEntity<GlobalResponse> response = personalsController.findPersonalsById(100L);
+        assertEquals(personalsResponse, response.getBody().getData());
+    }
+
+    @Test
+    public void findPersonalsById_NOT_FOUND()throws Exception{
+        when(personalsService.findPersonalsById(100L)).thenReturn(null);
+        ResponseEntity<GlobalResponse> response = personalsController.findPersonalsById(100L);
+        assertTrue(Objects.isNull(response.getBody().getData()));
+    }
 }

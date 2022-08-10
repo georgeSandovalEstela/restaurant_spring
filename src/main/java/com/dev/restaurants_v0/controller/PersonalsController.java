@@ -41,7 +41,7 @@ public class PersonalsController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<GlobalResponse> findPersonalsByDocumentNumber(@RequestParam(value = "id", required = true) Long id) throws Exception{
+    public ResponseEntity<GlobalResponse> findPersonalsById(@RequestParam(value = "id", required = true) Long id) throws Exception{
         PersonalsResponse personalsResponse = personalsService.findPersonalsById(id);
         return ResponseEntity.ok(GlobalResponse
                 .builder()
