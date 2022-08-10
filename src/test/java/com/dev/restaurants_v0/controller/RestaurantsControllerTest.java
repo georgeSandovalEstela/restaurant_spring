@@ -48,4 +48,12 @@ public class RestaurantsControllerTest {
         ResponseEntity<GlobalResponse> response = restaurantsController.updateRestaurants(request);
         assertTrue((Boolean) response.getBody().getData());
     }
+
+    @Test
+    public void updateRestaurants_ERROR_ID()throws Exception{
+        RestaurantsUpdateRequest request = new RestaurantsUpdateRequest(100L,"20478569843","La favela","Restobar","Desconocido");
+        when(restaurantService.updateRestaurant(request)).thenReturn(Codes.COMMON_ERR_ID_001);
+        ResponseEntity<GlobalResponse> response = restaurantsController.updateRestaurants(request);
+        assertEquals(Codes.COMMON_ERR_ID_001 , response.getBody().getError().getCode());
+    }
 }
