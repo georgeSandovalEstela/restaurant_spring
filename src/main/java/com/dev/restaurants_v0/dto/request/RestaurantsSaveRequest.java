@@ -1,11 +1,12 @@
 package com.dev.restaurants_v0.dto.request;
 
 import com.dev.restaurants_v0.domain.Restaurants;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Date;
 
+@NoArgsConstructor
+@AllArgsConstructor
 @Setter
 @Getter
 public class RestaurantsSaveRequest {

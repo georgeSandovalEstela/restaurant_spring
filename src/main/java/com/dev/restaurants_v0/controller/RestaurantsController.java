@@ -4,7 +4,7 @@ import com.dev.restaurants_v0.domain.Restaurants;
 import com.dev.restaurants_v0.dto.base.ErrorResponse;
 import com.dev.restaurants_v0.dto.base.GlobalResponse;
 import com.dev.restaurants_v0.dto.request.RestaurantsSaveRequest;
-import com.dev.restaurants_v0.dto.request.RestaurantUpdateRequest;
+import com.dev.restaurants_v0.dto.request.RestaurantsUpdateRequest;
 import com.dev.restaurants_v0.dto.response.Restaurants.RestaurantPersonalsResponse;
 import com.dev.restaurants_v0.service.RestaurantService;
 import com.dev.restaurants_v0.utils.Codes;
@@ -37,8 +37,8 @@ public class RestaurantsController {
     }
 
     @PutMapping("/update")
-    public ResponseEntity<GlobalResponse> updateRestaurants(@RequestBody RestaurantUpdateRequest restaurantUpdateRequest) throws Exception{
-        String code = restaurantService.updateRestaurant(restaurantUpdateRequest);
+    public ResponseEntity<GlobalResponse> updateRestaurants(@RequestBody RestaurantsUpdateRequest restaurantsUpdateRequest) throws Exception{
+        String code = restaurantService.updateRestaurant(restaurantsUpdateRequest);
         return ResponseEntity.ok(GlobalResponse.builder()
                 .error((code==Codes.SUCCESS_UPDATE)?null: ErrorResponse.builder().code(code).message(Messages.COMMON_ERROR_ID).build())
                 .data((code==Codes.SUCCESS_UPDATE)?true: null).build());
