@@ -1,5 +1,6 @@
 package com.dev.restaurants_v0.controller;
 
+import com.dev.restaurants_v0.domain.Restaurants;
 import com.dev.restaurants_v0.dto.base.GlobalResponse;
 import com.dev.restaurants_v0.dto.request.RestaurantsSaveRequest;
 import com.dev.restaurants_v0.dto.request.RestaurantsUpdateRequest;
@@ -11,6 +12,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.ResponseEntity;
+
+import java.util.Date;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -73,4 +76,25 @@ public class RestaurantsControllerTest {
         assertEquals(Codes.COMMON_ERR_ID_001, response.getBody().getError().getCode());
     }
 
+    @Test
+    public void findRestaurantById_SUCCESS()throws Exception{
+        Restaurants itemFound = new Restaurants(100L,"20987654324","Tunki","Restobar","Castillo",new Date(),null,null,1);
+        when(restaurantService.findRestaurantById(100L)).thenReturn(itemFound);
+        ResponseEntity<GlobalResponse> response = restaurantsController.findRestaurantById(100L);
+        assertEquals(itemFound, response.getBody().getData());
+    }
+
+    @Test
+    public void findRestaurantById_ERROR_ID()throws Exception{
+        when(restaurantService.findRestaurantById(100L)).thenReturn(null);
+        ResponseEntity<GlobalResponse> response = restaurantsController.findRestaurantById(100L);
+        assertEquals(Codes.COMMON_ERR_ID_001, response.getBody().getError().getCode());
+    }
+
+    @Test
+    public void findPersonalsByRestaurantId_ERROR_ID()throws Exception{
+        when(restaurantService.getPersonalsByRestaurantId(100L)).thenReturn(null);
+        ResponseEntity<GlobalResponse> response = restaurantsController.findRestaurantById(100L);
+        assertEquals(Codes.COMMON_ERR_ID_001, response.getBody().getError().getCode());
+    }
 }
