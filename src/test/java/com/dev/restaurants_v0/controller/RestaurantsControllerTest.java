@@ -56,4 +56,21 @@ public class RestaurantsControllerTest {
         ResponseEntity<GlobalResponse> response = restaurantsController.updateRestaurants(request);
         assertEquals(Codes.COMMON_ERR_ID_001 , response.getBody().getError().getCode());
     }
+
+    @Test
+    public void deleteRestaurants_SUCCESS_DELETE()throws Exception{
+        Long idRestaurant = 100L;
+        when(restaurantService.deleteRestaurantById(idRestaurant)).thenReturn(Codes.SUCCESS_DELETE);
+        ResponseEntity<GlobalResponse> response = restaurantsController.deleteRestaurantById(idRestaurant);
+        assertTrue((Boolean) response.getBody().getData());
+    }
+
+    @Test
+    public void deleteRestaurants_ERROR_ID()throws Exception{
+        Long idRestaurant = 100L;
+        when(restaurantService.deleteRestaurantById(idRestaurant)).thenReturn(Codes.COMMON_ERR_ID_001);
+        ResponseEntity<GlobalResponse> response = restaurantsController.deleteRestaurantById(idRestaurant);
+        assertEquals(Codes.COMMON_ERR_ID_001, response.getBody().getError().getCode());
+    }
+
 }
