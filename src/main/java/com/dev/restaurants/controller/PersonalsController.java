@@ -10,6 +10,7 @@ import com.dev.restaurants.utils.Messages;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("api/v1/personals")
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 public class PersonalsController {
 
     public final PersonalsService personalsService;
-
+    private final RestTemplate restTemplate;
 
     @PostMapping("/save")
     public ResponseEntity<GlobalResponse> savePersonals(@RequestBody PersonalsSaveRequest personalsSaveRequest) throws Exception {
@@ -44,5 +45,11 @@ public class PersonalsController {
         return ResponseEntity.ok(GlobalResponse
                 .builder()
                 .data(personalsResponse).build());
+    }
+
+    @GetMapping("/restTemplate")
+    public Object testRestTemplate() throws Exception{
+        String url ="http://localhost:8082/api/v1/restaurants/";
+        return restTemplate.getForObject(url,Object.class);
     }
 }
